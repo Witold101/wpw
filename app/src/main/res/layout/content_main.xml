@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="3"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="pl.pionwit.wpw.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <ListView
+        android:id="@+id/listViewContragent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
+        android:layout_weight="2"
+        android:padding="16dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/llFactory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageFactory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="72dp"
+                    android:src="@mipmap/ic_factory" />
+
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageFactory"
+                    android:hint="@string/name"
+                    android:inputType="text"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="32dp"
+                    android:textSize="16dp" />
+
+                <EditText
+                    android:id="@+id/etFulName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/etName"
+                    android:layout_toRightOf="@id/imageFactory"
+                    android:hint="@string/full_name"
+                    android:inputType="text"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="32dp"
+                    android:textSize="16dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imagePhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="32dp"
+                    android:src="@mipmap/ic_phone" />
+
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imagePhone"
+                    android:hint="@string/phone"
+                    android:inputType="phone"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="32dp"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/imageMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imagePhone"
+                    android:layout_gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="32dp"
+                    android:src="@mipmap/ic_mail_ru" />
+
+
+                <EditText
+                    android:id="@+id/etMail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/etPhone"
+                    android:layout_toRightOf="@id/imageMail"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="32dp"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/imageWeb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageMail"
+                    android:layout_gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="32dp"
+                    android:src="@mipmap/ic_web" />
+
+
+                <EditText
+                    android:id="@+id/etWeb"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/etMail"
+                    android:layout_toRightOf="@id/imageWeb"
+                    android:hint="@string/web"
+                    android:inputType="textUri"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="32dp"
+                    android:textSize="16dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/gvClients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llFactory"
+            android:numColumns="auto_fit"
+            android:columnWidth="200dp"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="10dp"
+            android:stretchMode="spacingWidthUniform"
+            android:padding="16dp"
+            >
+
+        </GridView>
+    </RelativeLayout>
+
+</LinearLayout>

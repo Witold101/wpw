@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="220dp"
+    android:layout_height="wrap_content"
+    android:background="#e9b0d0">
+
+    <TextView
+        android:id="@+id/tvNameGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="8dp"
+        android:text="@string/name_person"
+        android:textColor="#b6086a" />
+
+    <TextView
+        android:id="@+id/tvNameGridRez"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNameGrid"
+        android:paddingLeft="8dp"
+        android:text="Василюс Виталий Валенсасович" />
+
+    <TextView
+        android:id="@+id/tvDepartmentGrid"
+        android:paddingTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNameGridRez"
+        android:textColor="#b6086a"
+        android:paddingLeft="8dp"
+        android:text="@string/department" />
+
+    <TextView
+        android:id="@+id/tvDepartmentGridRez"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDepartmentGrid"
+        android:paddingLeft="8dp"
+        android:text="Начальник отдела снабжения" />
+
+    <TextView
+        android:id="@+id/tvPhoneGrid"
+        android:paddingTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDepartmentGridRez"
+        android:paddingLeft="8dp"
+        android:textColor="#b6086a"
+        android:text="@string/phone" />
+
+    <TextView
+        android:id="@+id/tvPhoneGridRez"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPhoneGrid"
+        android:paddingLeft="8dp"
+        android:text="+375 29 701-30-82" />
+
+    <TextView
+        android:id="@+id/tvMailGrid"
+        android:paddingTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPhoneGridRez"
+        android:paddingLeft="8dp"
+        android:textColor="#b6086a"
+        android:text="@string/email" />
+
+    <TextView
+        android:id="@+id/tvMailGridRez"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMailGrid"
+        android:paddingLeft="8dp"
+        android:text="vi_stal@hotmail.com"
+        android:paddingBottom="8dp"/>
+
+</RelativeLayout>

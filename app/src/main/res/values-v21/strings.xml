@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">Наименование</string>
+    <string name="full_name">Полное наименование</string>
+    <string name="phone">Телефон</string>
+    <string name="email">E-mail</string>
+    <string name="web">WWW</string>
+    <string name="name_person">Имя</string>
+    <string name="department">Должность</string>
+    <string name="string_buld">Ул./Дом</string>
+    <string name="city">Город</string>
+    <string name="post_code">Индекс</string>
+    <string name="country">Страна</string>
+    <string name="address">АДРЕС</string>
+    <string name="dell_db">Dell DB</string>
+</resources>

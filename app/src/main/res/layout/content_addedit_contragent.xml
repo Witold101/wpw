@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="pl.pionwit.wpw.AddeditActivity"
+    android:weightSum="2">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:id="@+id/tvAddEditName"
+            android:textColor="@color/colorTextView"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvAddEditName"
+            android:hint="@string/name"
+            android:id="@+id/etAddEditName"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/full_name"
+            android:id="@+id/tvAddEditFullName"
+            android:layout_below="@id/etAddEditName"
+            android:textColor="@color/colorTextView"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvAddEditFullName"
+            android:hint="@string/full_name"
+            android:id="@+id/etAddEditFullName"
+            />
+        <TextView
+            android:layout_below="@id/etAddEditFullName"
+            android:id="@+id/tvItemAddressTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="@string/address"
+            android:textColor="@color/colorTextView"/>
+
+        <TextView
+            android:id="@+id/tvItemAddressStreet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvItemAddressTitle"
+            android:layout_margin="10dp"
+            android:text="@string/string_build"
+            android:textColor="@color/colorTextView"/>
+
+        <EditText
+            android:id="@+id/etItemAddressStreet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvItemAddressTitle"
+            android:layout_toEndOf="@id/tvItemAddressStreet"
+            />
+
+        <EditText
+            android:id="@+id/etItemAddressStreet2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etItemAddressStreet"
+            />
+
+
+        <TextView
+            android:id="@+id/tvItemAddressCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etItemAddressStreet2"
+            android:layout_margin="10dp"
+            android:text="@string/city"
+            android:textColor="@color/colorTextView"/>
+
+        <EditText
+            android:id="@+id/etItemAddressCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etItemAddressStreet2"
+            android:layout_toEndOf="@id/tvItemAddressCity" />
+
+        <TextView
+            android:id="@+id/tvItemAddressPostCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etItemAddressCity"
+            android:layout_margin="10dp"
+            android:text="@string/post_code"
+            android:textColor="@color/colorTextView"/>
+
+        <EditText
+            android:id="@+id/etItemAddressPostCode"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etItemAddressCity"
+            android:layout_toEndOf="@id/tvItemAddressPostCode" />
+
+        <TextView
+            android:id="@+id/tvItemAddressCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/etItemAddressPostCode"
+            android:layout_below="@id/etItemAddressCity"
+            android:text="@string/country"
+            android:textColor="@color/colorTextView"/>
+
+        <Spinner
+            android:id="@+id/spItemAddressCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvItemAddressCity"
+            android:layout_toEndOf="@id/tvItemAddressCountry"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/rlAddEdit">
+    </RelativeLayout>
+</LinearLayout>
