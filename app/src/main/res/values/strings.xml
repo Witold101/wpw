@@ -14,4 +14,13 @@
     <string name="country">Страна</string>
     <string name="address">АДРЕС</string>
     <string name="dell_db">Dell DB</string>
+    <string name="settings">Настройки</string>
+    <string name="lists">Справочники</string>
+    <string name="country_codes">Страны коды</string>
+    <string name="empty">Нет записей</string>
+
+    <string-array name="settings">
+        <item> Country </item>
+        <item> Address </item>
+    </string-array>
 </resources>

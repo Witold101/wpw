@@ -24,6 +24,12 @@
             android:label="@string/city"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".logic.settings.SettingsActivity"
+            android:label="@string/settings"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
 
 </manifest>

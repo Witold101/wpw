@@ -8,13 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBwpw extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "db_wpw";
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 3;
     public static final String TABLE_CLIENT = "td_client";
     public static final String TABLE_COUNTRY  = "td_country";
     public static final String TABLE_PHONE  = "td_phone";
     public static final String TABLE_MAIL  = "td_mail";
     public static final String TABLE_CONTACT  = "td_contact";
     public static final String TABLE_NOTE  = "td_note";
+    public static final String TABLE_SETTINGS_MENU="td_settings_menu";
 
 
     public DBwpw(Context context) {
@@ -68,6 +69,12 @@ public class DBwpw extends SQLiteOpenHelper {
                 "                note text,\n" +
                 "                date_changes text NOT NULL \n" +
                 "        );");
+        db.execSQL(" CREATE TABLE " + TABLE_SETTINGS_MENU + " (\n" +
+                "                _id integer PRIMARY KEY AUTOINCREMENT,\n" +
+                "                id_img integer,\n" +
+                "                name_menu text NOT NULL,\n" +
+                "                date_changes text NOT NULL \n" +
+                "        );");
     }
 
     @Override
@@ -84,6 +91,14 @@ public class DBwpw extends SQLiteOpenHelper {
             } finally {
                 db.endTransaction();
             }
+        }
+        if (oldVersion == 2 && newVersion == 3) {
+            db.execSQL(" CREATE TABLE " + TABLE_SETTINGS_MENU + " (\n" +
+                    "                _id integer PRIMARY KEY AUTOINCREMENT,\n" +
+                    "                id_img integer,\n" +
+                    "                name_menu text NOT NULL,\n" +
+                    "                date_changes text NOT NULL \n" +
+                    "        );");
         }
     }
 }

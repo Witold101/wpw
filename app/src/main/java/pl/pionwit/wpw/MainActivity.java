@@ -26,6 +26,7 @@ import pl.pionwit.wpw.adapters.ContragentAdapter;
 import pl.pionwit.wpw.logic.contragents.ContactItem;
 import pl.pionwit.wpw.logic.contragents.ContragentItem;
 import pl.pionwit.wpw.logic.db.DBwpw;
+import pl.pionwit.wpw.logic.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_lists) {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
         if (id == R.id.action_dell) {
