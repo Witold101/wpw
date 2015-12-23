@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.InflateException;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +31,7 @@ import java.util.Date;
 import pl.pionwit.wpw.AddeditActivity;
 import pl.pionwit.wpw.R;
 import pl.pionwit.wpw.adapters.CountryAdapter;
+import pl.pionwit.wpw.library.TextWatcherCast;
 import pl.pionwit.wpw.logic.contragents.ContragentItem;
 import pl.pionwit.wpw.logic.contragents.Country;
 import pl.pionwit.wpw.logic.db.DBwpw;
@@ -46,6 +51,13 @@ public class FrgCountry extends android.support.v4.app.Fragment {
     ArrayList<Country> alCountrys;
     long idCountryCode;
 
+    TextWatcherCast watcherCast;
+    TextWatcherCast watcherCastLitlCode;
+    TextWatcherCast watcherCastCode;
+
+    AlertDialog alertDialog;
+    AlertDialog alertDialogEdit;
+
 
     @Nullable
     @Override
@@ -59,7 +71,6 @@ public class FrgCountry extends android.support.v4.app.Fragment {
         adapter.notifyDataSetChanged();
         countrysList.setAdapter(adapter);
 
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,21 +79,50 @@ public class FrgCountry extends android.support.v4.app.Fragment {
                 adb.setTitle(cnt.getString(R.string.title_add_country));
                 adb.setView(vDialod);
                 adb.setIcon(R.mipmap.ic_wan);
-                adb.setPositiveButton(cnt.getString(R.string.btn_submit), new DialogInterface.OnClickListener() {
+
+                EditText etCountry = (EditText) vDialod.findViewById(R.id.etDialogAddCountry);
+                EditText etLitlCode = (EditText) vDialod.findViewById(R.id.etDialogAddLitlCod);
+                EditText etCode = (EditText) vDialod.findViewById(R.id.etDialogAddCountryCode);
+
+//-------------- Валидация текста в окне Добавления кодов стран ----------------
+                watcherCast = new TextWatcherCast(etCountry);
+                watcherCast.setMinLength(3);
+                watcherCast.setMaxLength(50);
+                etCountry.addTextChangedListener(watcherCast);
+
+                watcherCastLitlCode = new TextWatcherCast(etLitlCode);
+                watcherCastLitlCode.setMinLength(2);
+                watcherCastLitlCode.setMaxLength(2);
+                watcherCastLitlCode.setUpperCase(true);
+                etLitlCode.addTextChangedListener(watcherCastLitlCode);
+
+                watcherCastCode = new TextWatcherCast(etCode);
+                watcherCastCode.setMinLength(1);
+                watcherCastCode.setCheckStringToInt(true);
+                etCode.addTextChangedListener(watcherCastCode);
+
+//***********************************************************************************
+                adb.setPositiveButton(cnt.getString(R.string.btn_submit), null);
+                alertDialog = adb.create();
+                alertDialog.show();
+                alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        EditText etCountry = (EditText) vDialod.findViewById(R.id.etDialogAddCountry);
-                        String country = etCountry.getText().toString();
-                        EditText etCode = (EditText) vDialod.findViewById(R.id.etDialogAddCountryCode);
-                        int code = Integer.parseInt(etCode.getText().toString());
-                        EditText etLitlCode = (EditText) vDialod.findViewById(R.id.etDialogAddLitlCod);
-                        String litlCode = etLitlCode.getText().toString();
-                        addCountryCode(country, code, litlCode, new Date(), cnt);
-                        adapter.notifyDataSetChanged(initCountrys(cnt));
+                    public void onClick(View v) {
+                        if (watcherCast.isFlag() & watcherCastLitlCode.isFlag() & watcherCastCode.isFlag()) {
+                            EditText etCountry = (EditText) vDialod.findViewById(R.id.etDialogAddCountry);
+                            String country = etCountry.getText().toString();
+                            EditText etCode = (EditText) vDialod.findViewById(R.id.etDialogAddCountryCode);
+                            int code = Integer.parseInt(etCode.getText().toString());
+                            EditText etLitlCode = (EditText) vDialod.findViewById(R.id.etDialogAddLitlCod);
+                            String litlCode = etLitlCode.getText().toString();
+                            addCountryCode(country, code, litlCode, new Date(), cnt);
+                            adapter.notifyDataSetChanged(initCountrys(cnt));
+                            alertDialog.dismiss();
+                        } else {
+                            Toast.makeText(cnt, "Не правильно заполнена форма!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
-
-                adb.show();
             }
         });
 
@@ -94,7 +134,7 @@ public class FrgCountry extends android.support.v4.app.Fragment {
                 adb.setTitle(cnt.getString(R.string.title_dell_edit_country));
                 adb.setView(vDialod);
                 adb.setIcon(R.mipmap.ic_wan);
-                idCountryCode=id;
+                idCountryCode = id;
 
                 Country countryItem = (Country) parent.getAdapter().getItem(position);
                 EditText etCountry = (EditText) vDialod.findViewById(R.id.etDialogAddCountry);
@@ -103,6 +143,27 @@ public class FrgCountry extends android.support.v4.app.Fragment {
                 etCode.setText(String.valueOf(countryItem.getKod()));
                 EditText etLitlCode = (EditText) vDialod.findViewById(R.id.etDialogAddLitlCod);
                 etLitlCode.setText(countryItem.getLitlCod());
+
+//-------------- Валидация текста в окне Редактирования кодов стран ----------------
+                watcherCast = new TextWatcherCast(etCountry);
+                watcherCast.setMinLength(3);
+                watcherCast.setMaxLength(50);
+                etCountry.addTextChangedListener(watcherCast);
+
+                watcherCastLitlCode = new TextWatcherCast(etLitlCode);
+                watcherCastLitlCode.setMinLength(2);
+                watcherCastLitlCode.setMaxLength(2);
+                watcherCastLitlCode.setUpperCase(true);
+                etLitlCode.addTextChangedListener(watcherCastLitlCode);
+
+                watcherCastCode = new TextWatcherCast(etCode);
+                watcherCastCode.setMinLength(1);
+                watcherCastCode.setMaxLength(5);
+                watcherCastCode.setUpperCase(false);
+                watcherCastCode.setCheckStringToInt(true);
+                etCode.addTextChangedListener(watcherCastCode);
+
+//***********************************************************************************
                 adb.setNegativeButton(cnt.getString(R.string.btn_dell), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -111,31 +172,31 @@ public class FrgCountry extends android.support.v4.app.Fragment {
                         Toast.makeText(cnt, R.string.toast_dell_country, Toast.LENGTH_SHORT).show();
                     }
                 });
-                adb.setPositiveButton(cnt.getString(R.string.btn_submit), new DialogInterface.OnClickListener() {
+                adb.setPositiveButton(cnt.getString(R.string.btn_submit), null);
+
+                alertDialogEdit = adb.create();
+                alertDialogEdit.show();
+                alertDialogEdit.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        EditText etCountry = (EditText) vDialod.findViewById(R.id.etDialogAddCountry);
-                        String country = etCountry.getText().toString();
-                        EditText etCode = (EditText) vDialod.findViewById(R.id.etDialogAddCountryCode);
-                        int code = Integer.parseInt(etCode.getText().toString());
-                        EditText etLitlCode = (EditText) vDialod.findViewById(R.id.etDialogAddLitlCod);
-                        String litlCode = etLitlCode.getText().toString();
-                        updateCountryCode(idCountryCode,country,code,litlCode,new Date(),cnt);
-                        adapter.notifyDataSetChanged(initCountrys(cnt));
-                        Toast.makeText(cnt, R.string.toast_upd_country, Toast.LENGTH_SHORT).show();
+                    public void onClick(View v) {
+                        if (watcherCast.isFlag() & watcherCastLitlCode.isFlag() & watcherCastCode.isFlag()) {
+                            EditText etCountry = (EditText) vDialod.findViewById(R.id.etDialogAddCountry);
+                            String country = etCountry.getText().toString();
+                            EditText etCode = (EditText) vDialod.findViewById(R.id.etDialogAddCountryCode);
+                            int code = Integer.parseInt(etCode.getText().toString());
+                            EditText etLitlCode = (EditText) vDialod.findViewById(R.id.etDialogAddLitlCod);
+                            String litlCode = etLitlCode.getText().toString();
+                            updateCountryCode(idCountryCode, country, code, litlCode, new Date(), cnt);
+                            adapter.notifyDataSetChanged(initCountrys(cnt));
+                            Toast.makeText(cnt, R.string.toast_upd_country, Toast.LENGTH_SHORT).show();
+                            alertDialogEdit.dismiss();
+                        } else {
+                            Toast.makeText(cnt, "Не правильно заполнена форма!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
-                adb.show();
-
                 return true;
-            }
-        });
-
-        countrysList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(cnt, String.valueOf(position), Toast.LENGTH_SHORT).show();
             }
         });
         return v;
