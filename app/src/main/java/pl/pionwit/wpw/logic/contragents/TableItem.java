@@ -20,6 +20,10 @@ public class TableItem {
         return id;
     }
 
+    public void setId(int id){
+        this.id=id;
+    }
+
     public Date getDateLastChanges() {
         return dateLastChanges;
     }

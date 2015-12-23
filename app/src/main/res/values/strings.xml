@@ -16,11 +16,14 @@
     <string name="dell_db">Dell DB</string>
     <string name="settings">Настройки</string>
     <string name="lists">Справочники</string>
-    <string name="country_codes">Страны коды</string>
+    <string name="country_codes">Телефонный код страны</string>
     <string name="empty">Нет записей</string>
+    <string name="litl_cod_country">Koд по ISO 3166–1</string>
+    <string name="toast_upd_country">Код страны успешно обновлен!</string>
+    <string name="toast_dell_country">Код страны успешно удален!</string>
+    <string name="btn_submit">Принять</string>
+    <string name="btn_dell">Удалить</string>
+    <string name="title_dell_edit_country">Редактировать/Удалить код страны</string>
+    <string name="title_add_country">Добавить код страны</string>
 
-    <string-array name="settings">
-        <item> Country </item>
-        <item> Address </item>
-    </string-array>
 </resources>

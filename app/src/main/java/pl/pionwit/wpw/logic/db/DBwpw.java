@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBwpw extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "db_wpw";
-    public static final int DB_VERSION = 3;
+    public static final int DB_VERSION = 4;
     public static final String TABLE_CLIENT = "td_client";
     public static final String TABLE_COUNTRY  = "td_country";
     public static final String TABLE_PHONE  = "td_phone";
@@ -38,6 +38,7 @@ public class DBwpw extends SQLiteOpenHelper {
                 "                _id integer PRIMARY KEY AUTOINCREMENT,\n" +
                 "                name text NOT NULL,\n" +
                 "                cod integer NOT NULL,\n" +
+                "                litl_cod text NOT NULL,\n" +
                 "                date_changes text NOT NULL \n" +
                 "        );");
         db.execSQL(" CREATE TABLE " + TABLE_PHONE + " (\n" +
@@ -100,5 +101,21 @@ public class DBwpw extends SQLiteOpenHelper {
                     "                date_changes text NOT NULL \n" +
                     "        );");
         }
+
+        if (oldVersion == 3 && newVersion == 4) {
+
+            db.execSQL(" DROP TABLE " + TABLE_SETTINGS_MENU );
+
+            db.execSQL(" CREATE TABLE " + TABLE_COUNTRY + " (\n" +
+                    "                _id integer PRIMARY KEY AUTOINCREMENT,\n" +
+                    "                name text NOT NULL,\n" +
+                    "                cod integer NOT NULL,\n" +
+                    "                litl_cod text NOT NULL,\n" +
+                    "                date_changes text NOT NULL \n" +
+                    "        );");
+
+        }
     }
+
+
 }

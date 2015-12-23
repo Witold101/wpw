@@ -41,7 +41,8 @@ public class CountryAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        Country rez=(Country)getItem(position);
+        return rez.getId();
     }
 
     @Override
@@ -53,7 +54,12 @@ public class CountryAdapter extends BaseAdapter {
         Country p = countries.get(position);
         ((TextView) view.findViewById(R.id.tvCountryCod)).setText(Integer.toString(p.getKod()));
         ((TextView) view.findViewById(R.id.tvCountryName)).setText(p.getName());
-        ((ImageView) view.findViewById(R.id.ivCountryFlag)).setImageResource(R.mipmap.ic_phone);
+        ((TextView) view.findViewById(R.id.tvCountryLitlName)).setText(p.getLitlCod());
         return view;
+    }
+
+    public void notifyDataSetChanged(ArrayList<Country> countries) {
+        this.countries=countries;
+        super.notifyDataSetChanged();
     }
 }

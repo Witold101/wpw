@@ -8,13 +8,18 @@ import java.util.Date;
 public class Country extends TableItem implements ITableAll {
     private String name;
     private int kod;
-    private int idImgFlag;
+    private String litlCod;
 
-    public Country(String name, int kod,Date date,int idImgFlag) {
+    public Country(String name, int kod,Date date,String litlCod, int id) {
         super(date);
+        super.setId(id);
         this.name = name;
         this.kod = kod;
-        this.idImgFlag=idImgFlag;
+        this.litlCod=litlCod;
+    }
+
+    public Country(){
+        super(new Date());
     }
 
     public String getName() {
@@ -33,12 +38,12 @@ public class Country extends TableItem implements ITableAll {
         this.kod = kod;
     }
 
-    public int getIdImgFlag() {
-        return idImgFlag;
+    public String getLitlCod() {
+        return litlCod;
     }
 
-    public void setIdImgFlag(int idImgFlag) {
-        this.idImgFlag = idImgFlag;
+    public void setLitlCod(String litlCod) {
+        this.litlCod = litlCod;
     }
 
     @Override
