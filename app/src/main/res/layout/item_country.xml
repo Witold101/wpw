@@ -15,6 +15,7 @@
         android:id="@+id/tvCountryCod"
         android:layout_marginLeft="16dp"
         android:layout_gravity="center_vertical"
+        android:hint="@string/country_codes"
         />
     <TextView
         android:layout_width="100dp"
@@ -22,6 +23,7 @@
         android:id="@+id/tvCountryName"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="16dp"
+        android:hint="@string/country"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -29,5 +31,6 @@
         android:id="@+id/tvCountryLitlName"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="16dp"
+        android:hint="@string/litl_cod_country"
         />
 </LinearLayout>

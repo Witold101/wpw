@@ -90,10 +90,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.action_dell) {
-            DBwpw dbWPW = new DBwpw(this);
-            SQLiteDatabase db = dbWPW.getWritableDatabase();
-            db.delete(DBwpw.TABLE_CLIENT, null, null);
-            dbWPW.close();
+            this.deleteDatabase(DBwpw.DB_NAME);
             return true;
         }
 

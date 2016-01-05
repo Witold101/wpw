@@ -25,8 +25,10 @@
             />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:orientation="horizontal"
+            android:id="@+id/llSettingCountryCod"
+
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -43,6 +45,29 @@
                 android:layout_gravity="center_vertical"
                 />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:id="@+id/llSettingCategory"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_checkbox_multiple_marked_outline"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category"
+                android:textSize="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+
     </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"

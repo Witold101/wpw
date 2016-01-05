@@ -24,4 +24,7 @@
     <string name="btn_dell">Удалить</string>
     <string name="title_dell_edit_country">Редактировать/Удалить код страны</string>
     <string name="title_add_country">Добавить код страны</string>
+    <string name="category">Категории</string>
+    <string name="category_add">Добавить категорию.</string>
+    <string name="category_edit_dell">Редактировать/Удалить категорию.</string>
 </resources>

@@ -17,6 +17,7 @@ import android.widget.EditText;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import pl.pionwit.wpw.library.ConvertDate;
 import pl.pionwit.wpw.logic.contragents.Client;
 import pl.pionwit.wpw.logic.db.DBwpw;
 
@@ -31,7 +32,6 @@ public class AddeditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addedit);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.tbAddEditContr);
         setSupportActionBar(toolbar);
 
@@ -55,11 +55,10 @@ public class AddeditActivity extends AppCompatActivity {
 
     private long addContragentToDB(String name, String fName, Date date) {
         long id=0;
-        SimpleDateFormat dateFormat=new SimpleDateFormat("dd.MM.yyyy hh:mm");
         ContentValues cv = new ContentValues();
         cv.put("name",name);
         cv.put("name_full",fName);
-        cv.put("date_changes", dateFormat.format(date));
+        cv.put("date_changes", ConvertDate.dateToString(date));
         id = db.insert(DBwpw.TABLE_CLIENT,null,cv);
         return id;
     }

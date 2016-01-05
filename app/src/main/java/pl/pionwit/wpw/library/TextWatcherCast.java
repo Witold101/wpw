@@ -23,15 +23,17 @@ public class TextWatcherCast implements TextWatcher {
         minLength=1;
         upperCase=false;
         checkStringToInt=false;
-        if (et.getText().length()==0) {
+    }
+
+    public void afterTextChanged(Editable s) {
+
+        if (editText.getText().length()==0) {
             editText.setError("Строка пуста!");
             flag=false;
         }else {
             flag=true;
         }
-    }
 
-    public void afterTextChanged(Editable s) {
 
         if (checkStringToInt){
             if (editText.getText().toString().matches("^-?\\d+$")){
@@ -77,6 +79,7 @@ public class TextWatcherCast implements TextWatcher {
     public void beforeTextChanged(CharSequence s, int start, int count, int after){
 
     }
+
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
     }
