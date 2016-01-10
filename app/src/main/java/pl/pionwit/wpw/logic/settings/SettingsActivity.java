@@ -24,12 +24,14 @@ public class SettingsActivity extends AppCompatActivity {
 
     LinearLayout llSetingCategory;
     LinearLayout llSetingCountryCod;
+    LinearLayout llSetingLevel;
     Context cnt;
     FragmentTransaction fTrans;
     int idFragment;
 
     FrgCountry frgCountry;
     FrgCategory frgCategory;
+    FrgLevel frgLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         llSetingCategory=(LinearLayout)findViewById(R.id.llSettingCategory);
         llSetingCountryCod=(LinearLayout)findViewById(R.id.llSettingCountryCod);
+        llSetingLevel=(LinearLayout)findViewById(R.id.llSettingLevel);
+
 
         frgCountry=new FrgCountry();
         frgCategory = new FrgCategory();
+        frgLevel=new FrgLevel();
 
         initFragment(R.id.llSettingCountryCod);
 
@@ -57,6 +62,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         llSetingCategory.setOnClickListener(ocView);
         llSetingCountryCod.setOnClickListener(ocView);
+        llSetingLevel.setOnClickListener(ocView);
+
     }
 
     private void initFragment(int idFragment) {
@@ -70,7 +77,11 @@ public class SettingsActivity extends AppCompatActivity {
             case R.id.llSettingCategory:
                 fTrans = getSupportFragmentManager().beginTransaction();
                 fTrans.replace(R.id.flSettingsRez, frgCategory);
-
+                fTrans.commit();
+                break;
+            case R.id.llSettingLevel:
+                fTrans = getSupportFragmentManager().beginTransaction();
+                fTrans.replace(R.id.flSettingsRez, frgLevel);
                 fTrans.commit();
                 break;
             default:

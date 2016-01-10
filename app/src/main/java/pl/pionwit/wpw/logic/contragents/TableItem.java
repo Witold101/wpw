@@ -8,27 +8,27 @@ package pl.pionwit.wpw.logic.contragents;
 import java.util.Date;
 
 public class TableItem {
-    private int id;
-    private Date dateLastChanges;
+    private long _id;
+    private Date dateChanges;
 
     public TableItem( Date date){
-        dateLastChanges=date;
+        dateChanges=date;
     }
 
 
-    public int getId() {
-        return id;
+    public long getId() {
+        return _id;
     }
 
-    public void setId(int id){
-        this.id=id;
+    public void setId(long id){
+        this._id=id;
     }
 
-    public Date getDateLastChanges() {
-        return dateLastChanges;
+    public Date getDateChanges() {
+        return dateChanges;
     }
 
-    public void setDateLastChanges(Date dateLastChanges) {
-        this.dateLastChanges = dateLastChanges;
+    public void setDateChanges(Date date) {
+        this.dateChanges = date;
     }
 }

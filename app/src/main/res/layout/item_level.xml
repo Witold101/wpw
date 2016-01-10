@@ -4,32 +4,24 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="32dp"
-    android:id="@+id/llCountry"
+    android:id="@+id/llSettingItemLevel"
     android:layout_gravity="center_vertical"
     >
 
     <TextView
         android:layout_width="56dp"
         android:layout_height="wrap_content"
-        android:id="@+id/tvCountryCod"
+        android:id="@+id/tvSettingLevelNumber"
         android:layout_marginLeft="16dp"
         android:gravity="center_vertical"
-        android:hint="@string/country_codes"
-        />
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvCountryName"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="16dp"
-        android:hint="@string/country"
+        android:hint="@string/number_level"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvCountryLitlName"
+        android:id="@+id/tvSettingLevelNote"
         android:gravity="center_vertical"
         android:layout_marginLeft="16dp"
-        android:hint="@string/litl_cod_country"
+        android:hint="@string/note_level"
         />
 </LinearLayout>

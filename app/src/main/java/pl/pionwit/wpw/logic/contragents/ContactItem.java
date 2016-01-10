@@ -6,7 +6,7 @@ package pl.pionwit.wpw.logic.contragents;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ContactItem extends TableItem implements ITableAll {
+public class ContactItem extends TableItem {
     private Date createDate;
     private String name;
     private ArrayList<Phone> phones;
@@ -28,9 +28,8 @@ public class ContactItem extends TableItem implements ITableAll {
         this.note = note;
     }
 
-    @Override
     public void setDate(Date date) {
-        setDateLastChanges(date);
+        setDateChanges(date);
     }
 
     public Date getCreateDate() {

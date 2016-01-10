@@ -5,7 +5,7 @@ package pl.pionwit.wpw.logic.contragents;
  */
 import java.util.Date;
 
-public class Mail extends TableItem implements ITableAll {
+public class Mail extends TableItem {
     private String mail;
     private int contactId;
 
@@ -23,8 +23,8 @@ public class Mail extends TableItem implements ITableAll {
     }
 
     @Override
-    public void setDate(Date date) {
-        setDateLastChanges(date);
+    public void setDateChanges(Date date) {
+        super.setDateChanges(date);
     }
 }
 

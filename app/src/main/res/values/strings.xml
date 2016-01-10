@@ -28,5 +28,10 @@
     <string name="category">Категории</string>
     <string name="category_add">Добавить категорию.</string>
     <string name="category_edit_dell">Редактировать/Удалить категорию.</string>
+    <string name="level">Уровень досупа</string>
+    <string name="number_level">Номер уровня</string>
+    <string name="note_level">Описание уровня доступа</string>
+    <string name="level_edit_dell">Редактировать/Удалить уровень доступа.</string>
+    <string name="level_add">Добавить уровень доступа.</string>
 
 </resources>

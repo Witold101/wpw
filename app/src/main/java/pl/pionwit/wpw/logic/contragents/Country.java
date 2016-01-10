@@ -5,7 +5,7 @@ package pl.pionwit.wpw.logic.contragents;
  */
 import java.util.Date;
 
-public class Country extends TableItem implements ITableAll {
+public class Country extends TableItem {
     private String name;
     private int kod;
     private String litlCod;
@@ -46,8 +46,7 @@ public class Country extends TableItem implements ITableAll {
         this.litlCod = litlCod;
     }
 
-    @Override
     public void setDate(Date date) {
-        setDateLastChanges(date);
+        setDateChanges(date);
     }
 }

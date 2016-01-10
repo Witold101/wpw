@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-public class Client extends TableItem implements ITableAll {
+public class Client extends TableItem {
     private String name;
     private String fullName;
     private String web;
@@ -24,9 +24,8 @@ public class Client extends TableItem implements ITableAll {
         this.contacts = new ArrayList<>(contacts);
     }
 
-    @Override
     public void setDate(Date date) {
-        setDateLastChanges(date);
+        setDateChanges(date);
     }
 
     public String getName() {

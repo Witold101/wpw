@@ -5,7 +5,7 @@ package pl.pionwit.wpw.logic.contragents;
  */
 import java.util.Date;
 
-public class Note extends TableItem implements ITableAll {
+public class Note extends TableItem {
 
     private String note;
     private int clientId;
@@ -30,11 +30,6 @@ public class Note extends TableItem implements ITableAll {
 
     public void setClientId(int clientId) {
         this.clientId = clientId;
-    }
-
-    @Override
-    public void setDate(Date date) {
-
     }
 }
 
