@@ -18,7 +18,6 @@ public class DBwpw extends SQLiteOpenHelper {
     public static final String TABLE_CATEGORY = "td_category";
     //------------------ Table for identification ---------------
     public static final String TABLE_LEVEL = "td_level";
-    public static final String TABLE_DEPARTMENT = "td_department";
     public static final String TABLE_EMPLOYEE = "td_employee";
     //-----------------------------------------------------------
     //------------------ Static records for tables --------------
@@ -91,19 +90,13 @@ public class DBwpw extends SQLiteOpenHelper {
                 "                number integer NOT NULL,\n" +
                 "                date_changes text NOT NULL \n" +
                 "        );");
-        db.execSQL(" CREATE TABLE " + TABLE_DEPARTMENT + " (\n" +
-                "                _id integer PRIMARY KEY AUTOINCREMENT,\n" +
-                "                name text NOT NULL,\n" +
-                "                td_level_id integer REFERENCES " + TABLE_LEVEL + "(" + RECORD_ID + ") ON DELETE SET NULL,\n" +
-                "                date_changes text NOT NULL \n" +
-                "        );");
         db.execSQL(" CREATE TABLE " + TABLE_EMPLOYEE + " (\n" +
                 "                _id integer PRIMARY KEY AUTOINCREMENT,\n" +
                 "                name text NOT NULL,\n" +
+                "                department text ,\n" +
                 "                email text NOT NULL,\n" +
                 "                password text NOT NULL,\n" +
-                "                department_id integer REFERENCES " + TABLE_DEPARTMENT + "(" + RECORD_ID + ") ON DELETE SET NULL,\n" +
-                //  "                level_id integer NOT NULL,\n" +
+                "                td_level_id integer REFERENCES " + TABLE_LEVEL + "(" + RECORD_ID + ") ON DELETE SET NULL,\n" +
                 "                date_create text NOT NULL, \n" +
                 "                date_changes text NOT NULL \n" +
                 "        );");
